@@ -1,0 +1,50 @@
+@use "variables" as v;
+@use "mixins" as m;
+
+.modal-form {
+  position: relative;
+
+  .modal-inputs {
+    margin-bottom: 20px;
+
+    .modal-input {
+      margin-bottom: 5px;
+
+      input, select {
+       width: 422px;
+       max-width: 100%;
+
+        @include m.mobile {
+          width: 100%;
+        }
+      }
+
+      &:last-child {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  .modal-button {
+    button.button {
+      width: 422px;
+      max-width: 100%;
+
+      @include m.mobile {
+        width: 100%;
+      }
+    }
+  }
+
+  .error {
+    color: red;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(calc(100% + 5px));
+    min-width: 100%;
+  }
+}

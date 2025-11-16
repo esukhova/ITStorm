@@ -1,0 +1,261 @@
+@use "variables" as v;
+@use "mixins" as m;
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: v.$root-font-size;
+  font-weight: 400;
+  color: v.$base-text-color;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  line-height: 140%;
+  color-scheme: light;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  @include m.font-styles('body');
+}
+
+app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+app-footer {
+  justify-self: end;
+  margin-top: auto;
+}
+
+body * {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol,
+li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.container {
+  width: 100%;
+  max-width: v.$width--container;
+  margin: 0 auto;
+  padding: 0 40px;
+
+  @include m.tablet {
+    max-width: 700px;
+  }
+
+
+  @include m.small-mobile {
+    padding: 0 15px;
+    max-width: 500px;
+  }
+}
+
+section {
+  opacity: 0;
+  animation: appearance 0.4s 0.4s forwards;
+}
+
+.img-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  pointer-events: none;
+
+  picture, svg, img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.input {
+  padding: 16px 18px;
+  background: #FFFFFF;
+  border: 2px solid v.$color-accent;
+  border-radius: 3px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: v.$base-text-color;
+  box-sizing: border-box;
+  outline: none;
+  appearance: none;
+
+  &::placeholder {
+    color: #A8ABA7;
+  }
+}
+
+select.input {
+  color: v.$color-accent;
+  cursor: pointer;
+}
+
+button {
+  border: none;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  padding: 0;
+  background-color: transparent;
+}
+
+.button {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: v.clamp-value-font(16px);
+  padding: 15px 20px;
+  color: v.$color-white;
+  background-color: v.$color-accent;
+  text-align: center;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s all ease;
+  box-sizing: border-box;
+
+  @include m.mobile {
+    font-size: v.clamp-value-font-m(16px);
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: v.$color-accent-hover;
+    }
+  }
+
+  &:disabled, &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+a.button {
+  text-decoration: none;
+  display: inline-block;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: v.$color-accent;
+}
+
+h2 {
+  @include m.font-styles('head-lora-38');
+}
+
+h3 {
+  @include m.font-styles('head-montserrat-20');
+}
+
+.accent {
+  color: v.$color-accent;
+}
+
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img, svg {
+    width: 100%;
+    height: auto;
+  }
+}
+
+
+.cdk-overlay-connected-position-bounding-box {
+  transform: translateY(10px);
+}
+
+.mat-mdc-menu-panel.mat-menu-after.mat-menu-below {
+  background-color: v.$color-white;
+}
+
+div.mat-mdc-menu-content, .mat-mdc-menu-content .mat-mdc-menu-item span.mat-mdc-menu-item-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: v.$base-text-color;
+  padding: 0;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.cdk-overlay-pane.mat-mdc-dialog-panel {
+  width: auto !important;
+  max-width: unset !important;
+}
+
+.owl-theme .owl-nav.disabled+.owl-dots {
+  position: absolute !important;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  @include m.mobile {
+    bottom: 10px;
+  }
+}
+
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+  background-color: v.$color-white;
+  border: 1px solid v.$color-white;
+}
+
+.owl-theme .owl-dots .owl-dot span {
+  background-color: transparent;
+  border: 1px solid v.$color-white;
+  transition: 0.2s all ease;
+  margin: 0 10px;
+}
+
+.owl-carousel .owl-stage {
+  display: flex;
+}
+
+.owl-carousel .owl-item {
+  display: flex;
+  height: auto;
+  justify-content: center;
+}
+
+.owl-carousel .slide-item {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+@keyframes appearance {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

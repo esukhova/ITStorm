@@ -1,0 +1,157 @@
+@use 'sass:map';
+@use 'sass:math';
+
+$font-family: (
+  'text': ('Montserrat', sans-serif),
+  'title': ('Lora', sans-serif),
+);
+
+@function clamp-value-font($base-value, $base-screen-width: 1480px, $max-screen-width: 1480px, $min-screen-width: 1200px, $root-font-size: 16px) {
+  $min: math.div($base-value, $base-screen-width) * $min-screen-width;
+  $val: math.div($base-value, $base-screen-width) * 100vw;
+  $max: math.div($base-value, $base-screen-width) * $max-screen-width;
+
+  $min-rem: math.div($min, $root-font-size) * 1rem;
+  $max-rem: math.div($max, $root-font-size) * 1rem;
+
+  @return clamp(#{$min-rem}, #{$val}, #{$max-rem});
+}
+
+@function clamp-value-font-m($base-value, $base-screen-width: 360px, $max-screen-width: 500px, $min-screen-width: 360px, $root-font-size: 16px) {
+  $min: math.div($base-value, $base-screen-width) * $min-screen-width;
+  $val: math.div($base-value, $base-screen-width) * 100vw;
+  $max: math.div($base-value, $base-screen-width) * $max-screen-width;
+
+  $min-rem: math.div($min, $root-font-size) * 1rem;
+  $max-rem: math.div($max, $root-font-size) * 1rem;
+
+  @return clamp(#{$min-rem}, #{$val}, #{$max-rem});
+}
+
+$font-size: (
+  'desktop': (
+    'h1': clamp-value-font(50px),
+    'head-lora-38': clamp-value-font(38px),
+    'head-lora-26': clamp-value-font(26px),
+    'head-montserrat-20': clamp-value-font(20px),
+    'body': 14px,
+  ),
+  'small-desktop': (
+    'h1': clamp-value-font(50px),
+    'head-lora-38': clamp-value-font(38px),
+    'head-lora-26': clamp-value-font(26px),
+    'head-montserrat-20': clamp-value-font(20px),
+    'body': 14px,
+  ),
+  'tablet': (
+    'h1': clamp-value-font(50px),
+    'head-lora-38': clamp-value-font(36px),
+    'head-lora-26': clamp-value-font(24px),
+    'head-montserrat-20': 20px,
+    'body': 14px,
+  ),
+  'mobile': (
+    'h1': clamp-value-font-m(24px),
+    'head-lora-38': clamp-value-font-m(24px),
+    'head-lora-26': clamp-value-font-m(20px),
+    'head-montserrat-20': clamp-value-font-m(16px),
+    'body': clamp-value-font-m(14px),
+  ),
+  '350px': (
+    'h1': clamp-value-font-m(20px),
+    'head-lora-38': clamp-value-font-m(24px),
+    'head-lora-26': clamp-value-font-m(22px),
+    'head-montserrat-20': clamp-value-font-m(16px),
+    'body': clamp-value-font-m(14px),
+  )
+);
+
+$font-weight: (
+  'desktop': (
+    'h1': 400,
+    'head-lora-38': 400,
+    'head-lora-26': 400,
+    'head-montserrat-20': 500,
+    'body': 400,
+  ),
+  'mobile': (
+    'h1': 400,
+    'head-lora-38': 400,
+    'head-lora-26': 400,
+    'head-montserrat-20': 500,
+    'body': 400,
+  ),
+);
+
+$line-height: (
+  'desktop': (
+    'h1': 130%,
+    'head-lora-38': 130%,
+    'head-lora-26': 130%,
+    'head-montserrat-20': 130%,
+    'body': 130%,
+  ),
+  'mobile': (
+    'h1': 130%,
+    'head-lora-38': 110%,
+    'head-lora-26': 130%,
+    'head-montserrat-20': 130%,
+    'body': 130%,
+  ),
+);
+
+$letter-spacing: (
+  'desktop': (
+    'h1': initial,
+    'head-lora-38': initial,
+    'head-lora-26': initial,
+    'head-montserrat-20': initial,
+    'body': initial,
+  ),
+  'mobile': (
+    'h1': initial,
+    'head-lora-38': initial,
+    'head-lora-26': initial,
+    'head-montserrat-20': initial,
+    'body': initial,
+  ),
+);
+
+$color: (
+    'h1': #FFFFFF,
+    'head-lora-38': #709FDC,
+    'head-lora-26': #709FDC,
+    'head-montserrat-20': #709FDC,
+    'body': #071739,
+);
+
+$font-family: (
+  'h1': ('Lora', sans-serif),
+  'head-lora-38': ('Lora', sans-serif),
+  'head-lora-26': ('Lora', sans-serif),
+  'head-montserrat-20': ('Montserrat', sans-serif),
+  'body': ('Montserrat', sans-serif),
+);
+
+$base-text-color: #071739;
+$secondary-text-color: #1E1A2B;
+$color-accent: #709FDC;
+$color-accent-hover: #5884bc;
+$color-accent-light: #B9D5FD;
+$color-white: #FFFFFF;
+$color-gray: #BEBEBE;
+
+$width: (
+  'desktop': 1199px,
+  'tablet': 991px,
+  'mobile': 767px,
+  'small-mobile': 575px,
+);
+
+$header-height: (
+  'desktop': 79px,
+  'mobile': 69px,
+);
+
+$width--container: 1320px;
+$root-font-size: 16px;
