@@ -1,0 +1,237 @@
+@use "../../../../../public/assets/styles/variables" as v;
+@use "../../../../../public/assets/styles/mixins" as m;
+
+.blog {
+  padding: m.clamp-f(20px, 80px, 992px, 1320px) 0 m.clamp-f(50px, 130px);
+
+  @include m.mobile {
+    padding: 0 0 50px;
+  }
+
+  .blog-title {
+    margin-bottom: m.clamp-value(40px);
+
+    @include m.font-styles('head-lora-38');
+
+    @include m.mobile {
+      margin-bottom: m.clamp-value-m(8px);
+    }
+  }
+
+  .blog-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .blog-applied-filters {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: v.clamp-value-font(16px);
+    line-height: 130%;
+
+    @include m.mobile {
+      font-size: v.clamp-value-font-m(12px);
+    }
+  }
+
+  .blog-applied-filter {
+    border: 2px solid v.$color-accent;
+    border-radius: 5px;
+    padding: 8px 18px;
+    display: flex;
+    align-items: center;
+    color: v.$color-accent;
+    margin: 0 m.clamp-f(6px, 20px) m.clamp-f(6px, 20px) 0;
+
+    a {
+      text-decoration: none;
+      cursor: pointer;
+      display: flex;
+      margin-left: 8px;
+    }
+  }
+
+  .blog-filter {
+    flex: 0 0 257px;
+    width: 257px;
+    box-sizing: border-box;
+    position: relative;
+    cursor: pointer;
+    font-size: v.clamp-value-font(16px);
+    line-height: 130%;
+
+    @include m.mobile {
+      flex: 0 1 50%;
+      width: 20px;
+      font-size: v.clamp-value-font-m(12px);
+    }
+
+    @media (max-width: 480px) {
+      flex: 0 0 50%;
+    }
+
+    .blog-filter-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0 12px 23px;
+      gap: 8px;
+    }
+
+    .blog-filter-body {
+      position: absolute;
+      width: 100%;
+      z-index: 3;
+      display: none;
+      padding: 17px 23px;
+      border: 2px solid v.$color-accent-light;
+      border-radius: 0 0 5px 5px;
+      color: v.$color-gray;
+      background-color: v.$color-white;
+      box-sizing: border-box;
+
+      @include m.mobile {
+        padding: m.clamp-value-m(12px);
+      }
+    }
+
+    .blog-filter-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      cursor: pointer;
+
+      @include m.mobile {
+        margin-bottom: 8px;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &:has(input:checked) {
+        color: v.$base-text-color;
+      }
+
+      input {
+        display: none;
+      }
+    }
+
+    &.open {
+      .blog-filter-head {
+        background-color: v.$color-accent-light;
+        border-radius: 5px 5px 0 0;
+        padding-right: 23px;
+      }
+
+      .blog-filter-body {
+        display: block;
+      }
+    }
+  }
+
+  .blog-articles {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 25px;
+    animation: 0.4s opacityAnimation forwards;
+
+    @include m.tablet {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    @include m.mobile {
+      grid-template-columns: 1fr;
+      gap: m.clamp-value-m(40px);
+    }
+  }
+
+  .blog-label {
+    font-size: v.clamp-value-font(30px);
+    animation: 2s opacityAnimation 2s forwards;
+    opacity: 0;
+
+    @include m.mobile {
+      font-size: v.clamp-value-font-m(24px);
+    }
+  }
+
+  .pagination {
+    margin-top: m.clamp-value(60px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: m.clamp-value(40px);
+
+    @include m.mobile {
+      margin-top: m.clamp-value(60px);
+      gap: m.clamp-value(40px);
+    }
+  }
+
+  .pagination-arrow {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    width: 19px;
+
+    svg {
+      fill: v.$color-accent-light;
+    }
+
+    &.prev {
+      transform: rotate(180deg);
+    }
+
+    &.disabled {
+      opacity: 0.2;
+      cursor: not-allowed;
+
+      svg {
+        fill: v.$base-text-color;
+      }
+    }
+  }
+
+  .pagination-pages {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  a.pagination-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    width: 28px;
+    height: 46px;
+    cursor: pointer;
+    font-size: v.clamp-value-font(20px);
+    color: v.$base-text-color;
+
+    @include m.mobile {
+      font-size: v.clamp-value-font-m(20px);
+    }
+
+    &.active {
+      color: v.$color-accent-light;
+    }
+  }
+}
+
+@keyframes opacityAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,116 @@
+@use 'sass:map';
+@use 'variables' as v;
+@use 'sass:math';
+
+@mixin head-lora-38 {
+	font-family: 'Lora', sans-serif;
+	font-weight: 400;
+	font-size: 38px;
+	line-height: 130%;
+	color: v.$color-accent;
+}
+
+@mixin head-lora-26 {
+	font-family: 'Lora', sans-serif;
+	font-weight: 400;
+	font-size: 26px;
+	line-height: 130%;
+	color: v.$color-accent;
+}
+
+@mixin head-montserrat-20 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 130%;
+	color: v.$color-accent;
+}
+
+@mixin container-width {
+  @media screen and (max-width: v.$width--container) {
+    @content
+  }
+}
+
+@mixin desktop {
+  @media (max-width: map.get(v.$width, 'desktop')) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: map.get(v.$width, 'tablet')) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: map.get(v.$width, 'mobile')) {
+    @content;
+  }
+}
+
+@mixin small-mobile {
+  @media (max-width: map.get(v.$width, 'small-mobile')) {
+    @content;
+  }
+}
+
+@mixin small-desktop {
+  @media (min-width: 992px) and (max-height: 800px) {
+    @content;
+  }
+}
+
+@mixin font-styles($type) {
+  font-family: map.get(v.$font-family, $type);
+  font-size: map.get(v.$font-size, 'desktop', $type);
+  line-height: map.get(v.$line-height, 'desktop', $type);
+  font-weight: map.get(v.$font-weight, 'desktop', $type);
+  letter-spacing: map.get(v.$letter-spacing, 'desktop', $type);
+  color: map.get(v.$color, $type);
+
+  @include small-desktop {
+    font-size: map.get(v.$font-size, 'small-desktop', $type);
+  }
+
+  @include tablet {
+    font-size: map.get(v.$font-size, 'tablet', $type);
+  }
+
+  @include mobile {
+    font-size: map.get(v.$font-size, 'mobile', $type);
+    line-height: map.get(v.$line-height, 'mobile', $type);
+    font-weight: map.get(v.$font-weight, 'mobile', $type);
+    letter-spacing: map.get(v.$letter-spacing, 'mobile', $type);
+  }
+
+  @media (max-width: 350px) {
+    font-size: map.get(v.$font-size, '350px', $type);
+  }
+}
+
+// work only with values in px units
+@function clamp-f($min, $max, $min-width: 360px, $max-width: 1320px) {
+  $slope: math.div(($max - $min), ($max-width - $min-width));
+  $y-axis-intersection: math.div(-1 * math.div($min-width, 1px) * $slope + math.div($min, 1px), 16);
+  $preffered: '#{$y-axis-intersection * 1rem} + #{$slope * 100 * 1vw}';
+
+  @return clamp(#{$min}, #{$preffered}, #{$max});
+}
+
+@function clamp-value($base-value, $base-screen-width: 1320px, $max-screen-width: 1320px, $min-screen-width: 1200px) {
+  $min: calc(#{math.div($base-value, $base-screen-width) * $min-screen-width});
+  $val: calc(#{math.div($base-value, $base-screen-width) * 100vw});
+  $max: calc(#{math.div($base-value, $base-screen-width) * $max-screen-width});
+
+  @return clamp(#{$min}, #{$val}, #{$max});
+}
+
+@function clamp-value-m($base-value, $base-screen-width: 360px, $max-screen-width: 767px, $min-screen-width: 360px) {
+  $min: calc(#{math.div($base-value, $base-screen-width) * $min-screen-width});
+  $val: calc(#{math.div($base-value, $base-screen-width) * 100vw});
+  $max: calc(#{math.div($base-value, $base-screen-width) * $max-screen-width});
+
+  @return clamp(#{$min}, #{$val}, #{$max});
+}

@@ -1,0 +1,24 @@
+@use "../../../../../public/assets/styles/auth-form" as *;
+@use "../../../../../public/assets/styles/variables" as v;
+@use "../../../../../public/assets/styles/mixins" as m;
+
+.signup {
+
+  padding: m.clamp-f(30px, 120px, 992px, 1320px) 0  m.clamp-f(30px, 120px);
+
+  @include m.tablet {
+    padding-top: 0;
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+
+    @include m.tablet {
+      flex-direction: column;
+      justify-content: start;
+    }
+  }
+}
