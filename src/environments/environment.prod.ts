@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    api: 'http://localhost:3000/api/',
-    serverStaticPath: 'http://localhost:3000/images/articles/'
+    api: 'https://itstorm-backend.onrender.com/api/',
+    serverStaticPath: 'https://itstorm-backend.onrender.com/images/articles/'
 };
