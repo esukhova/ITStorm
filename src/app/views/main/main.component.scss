@@ -401,6 +401,17 @@
       flex-direction: column;
       gap: 40px;
     }
+
+    card-loader {
+      flex: 1;
+    }
+
+    card-loader:nth-child(3), card-loader:nth-child(4) {
+
+      @include m.tablet {
+        display: none;
+      }
+    }
   }
 
   .popular-link {

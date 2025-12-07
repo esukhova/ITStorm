@@ -8,6 +8,7 @@ import {ModalComponent} from './components/modal/modal.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import {LoaderComponent} from './components/loader/loader.component';
+import { CardLoaderComponent } from './components/card-loader/card-loader.component';
 
 @NgModule({
   declarations: [
@@ -15,13 +16,15 @@ import {LoaderComponent} from './components/loader/loader.component';
     CommentsComponent,
     ServiceCardComponent,
     ModalComponent,
-    LoaderComponent
+    LoaderComponent,
+    CardLoaderComponent
   ],
   exports: [
     ArticleCardComponent,
     ServiceCardComponent,
     CommentsComponent,
-    LoaderComponent
+    LoaderComponent,
+    CardLoaderComponent
   ],
   imports: [
     CommonModule,
