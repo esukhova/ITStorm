@@ -43,10 +43,16 @@
 				</div>
 		</div>
 		</div>
-		<div class="blog-articles" *ngIf="articles && articles.length > 0">
+		<div class="blog-articles">
+      <card-loader *ngIf="!showLabel && (!articles || articles.length === 0)"></card-loader>
+      <card-loader *ngIf="!showLabel && (!articles || articles.length === 0)"></card-loader>
+      <card-loader *ngIf="!showLabel && (!articles || articles.length === 0)"></card-loader>
+      <card-loader *ngIf="!showLabel && (!articles || articles.length === 0)"></card-loader>
+
 			<article-card [article]="article" *ngFor="let article of articles"></article-card>
 		</div>
-		<div class="blog-label" *ngIf="(!articles || articles.length === 0)">
+
+		<div class="blog-label" *ngIf="showLabel">
 			Статьи не найдены
 		</div>
 
