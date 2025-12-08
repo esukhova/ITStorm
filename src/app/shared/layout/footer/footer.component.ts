@@ -11,16 +11,17 @@ import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 })
 export class FooterComponent {
 
-  dialogRef: MatDialogRef<any> | null = null;
+    dialogRef: MatDialogRef<any> | null = null;
 
-  constructor(private dialog: MatDialog) {
-  }
+    constructor(private dialog: MatDialog) {
+    }
 
-  openModal() {
-    this.dialogRef = this.dialog.open(ModalComponent, {
-      data: {
-        type: RequestTypeType.consultation,
-      }});
-  }
+    openModal() {
+        this.dialogRef = this.dialog.open(ModalComponent, {
+            data: {
+                type: RequestTypeType.consultation,
+            }
+        });
+    }
 
 }

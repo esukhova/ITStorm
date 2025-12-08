@@ -3,10 +3,10 @@ import {ArticleType} from "../../../../types/article.type";
 import {environment} from "../../../../environments/environment";
 
 @Component({
-  selector: 'article-card',
-  standalone: false,
-  templateUrl: './article-card.component.html',
-  styleUrl: './article-card.component.scss'
+    selector: 'article-card',
+    standalone: false,
+    templateUrl: './article-card.component.html',
+    styleUrl: './article-card.component.scss'
 })
 export class ArticleCardComponent {
 
@@ -15,9 +15,9 @@ export class ArticleCardComponent {
     @Input() article!: ArticleType;
     @Input() toggleBottomSheet!: () => void;
 
-  onReadMoreClick(): void {
-    if (this.toggleBottomSheet) {
-      this.toggleBottomSheet();
+    onReadMoreClick(): void {
+        if (this.toggleBottomSheet) {
+            this.toggleBottomSheet();
+        }
     }
-  }
 }

@@ -10,66 +10,66 @@ import {LoaderService} from '../../shared/services/loader.service';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor(private authService: AuthService,
-              private loaderService: LoaderService,
-              private router: Router,
-  ) {
-  }
-
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const tokens = this.authService.getTokens();
-    if (tokens && tokens.accessToken) {
-      const authReq = req.clone({
-        headers: req.headers.set('x-auth', tokens.accessToken)
-      });
-
-      return next.handle(authReq)
-        .pipe(
-          catchError((error) => {
-            if (error.status === 401 && !authReq.url.includes('/login') && !authReq.url.includes('/refresh')) {
-              return this.handle401Error(authReq, next);
-            }
-
-            return throwError(() => error)
-          }),
-          finalize(() => this.loaderService.hide())
-        );
+    constructor(private authService: AuthService,
+                private loaderService: LoaderService,
+                private router: Router,
+    ) {
     }
 
-    return next.handle(req)
-      .pipe(finalize(() => this.loaderService.hide()));
-  }
+    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        const tokens = this.authService.getTokens();
+        if (tokens && tokens.accessToken) {
+            const authReq = req.clone({
+                headers: req.headers.set('x-auth', tokens.accessToken)
+            });
 
-  handle401Error(req: HttpRequest<any>, next: HttpHandler) {
-    return this.authService.refresh()
-      .pipe(
-        switchMap((result: DefaultResponseType | AuthResponseType) => {
-          let error = '';
-          if ((result as DefaultResponseType).error !== undefined) {
-            error = (result as DefaultResponseType).message;
-          }
+            return next.handle(authReq)
+                .pipe(
+                    catchError((error) => {
+                        if (error.status === 401 && !authReq.url.includes('/login') && !authReq.url.includes('/refresh')) {
+                            return this.handle401Error(authReq, next);
+                        }
 
-          const refreshResult = result as AuthResponseType;
-          if (!refreshResult.accessToken || !refreshResult.refreshToken || !refreshResult.userId) {
-            error = 'Ошибка авторизации';
-          }
+                        return throwError(() => error)
+                    }),
+                    finalize(() => this.loaderService.hide())
+                );
+        }
 
-          if (error) {
-            return throwError(() => new Error(error));
-          }
+        return next.handle(req)
+            .pipe(finalize(() => this.loaderService.hide()));
+    }
 
-          this.authService.setTokens(refreshResult.accessToken, refreshResult.refreshToken);
-          const authReq = req.clone({
-            headers: req.headers.set('x-auth', refreshResult.accessToken)
-          });
+    handle401Error(req: HttpRequest<any>, next: HttpHandler) {
+        return this.authService.refresh()
+            .pipe(
+                switchMap((result: DefaultResponseType | AuthResponseType) => {
+                    let error = '';
+                    if ((result as DefaultResponseType).error !== undefined) {
+                        error = (result as DefaultResponseType).message;
+                    }
 
-          return next.handle(authReq);
-        }),
-        catchError(error => {
-          this.authService.removeTokens();
-          this.router.navigate(['/']);
-          return throwError(() => error);
-        })
-      )
-  }
+                    const refreshResult = result as AuthResponseType;
+                    if (!refreshResult.accessToken || !refreshResult.refreshToken || !refreshResult.userId) {
+                        error = 'Ошибка авторизации';
+                    }
+
+                    if (error) {
+                        return throwError(() => new Error(error));
+                    }
+
+                    this.authService.setTokens(refreshResult.accessToken, refreshResult.refreshToken);
+                    const authReq = req.clone({
+                        headers: req.headers.set('x-auth', refreshResult.accessToken)
+                    });
+
+                    return next.handle(authReq);
+                }),
+                catchError(error => {
+                    this.authService.removeTokens();
+                    this.router.navigate(['/']);
+                    return throwError(() => error);
+                })
+            )
+    }
 }

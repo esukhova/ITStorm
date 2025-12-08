@@ -1,4 +1,4 @@
 export enum RequestTypeType {
-   order = 'order',
-  consultation = 'consultation',
+    order = 'order',
+    consultation = 'consultation',
 }

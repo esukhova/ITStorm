@@ -2,205 +2,205 @@
 @use '../../../../../public/assets/styles/mixins' as m;
 
 header.header {
-  padding: m.clamp-f(20px, 40px) 0;
-  position: relative;
-  z-index: 10;
-  background-color: v.$color-white;
-
-  .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    padding: m.clamp-f(20px, 40px) 0;
     position: relative;
-  }
-
-  .logo {
-
-    @include m.tablet {
-      position: absolute;
-      top: 0;
-      left: 40px;
-      align-self: start;
-    }
-
-    @include m.small-mobile {
-      left: 16px;
-    }
-  }
-
-  .header-content {
-    display: flex;
-    align-items: center;
-    font-weight: 500;
-
-    @include m.tablet {
-      flex-direction: column;
-      gap: 20px;
-      align-items: end;
-      width: 100%;
-    }
-  }
-
-  .header-desktop-menu {
-    margin-right: m.clamp-f(70px, 227px, 992px, 1320px);
-    display: flex;
-
-    @include m.tablet {
-      display: none;
-    }
-
-    a {
-      margin-right: 30px;
-
-      &:last-child {
-        @include m.tablet {
-          margin-right: 0;
-        }
-      }
-    }
-  }
-
-  .header-mobile-menu {
-    padding: 20px;
-    height: 100vh;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    right: 0;
+    z-index: 10;
     background-color: v.$color-white;
-    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
-    z-index: -1;
-    transition: all 0.3s ease;
-    opacity: 0;
-    display: none;
-    width: 100vw;
-    transform: translate(-50%, 0);
 
-    @include m.tablet {
-      display: block;
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
     }
 
-    &--open {
-      transform: translate(-50%, 100%);
-      opacity: 1;
+    .logo {
+
+        @include m.tablet {
+            position: absolute;
+            top: 0;
+            left: 40px;
+            align-self: start;
+        }
+
+        @include m.small-mobile {
+            left: 16px;
+        }
     }
-  }
 
-  .header-desktop-menu, .header-mobile-menu {
-    a {
-      display: block;
-      color: v.$base-text-color;
-      cursor: pointer;
-      text-decoration: none;
-      transition: 0.2s all ease;
+    .header-content {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
 
-      &:hover, &:active, &.active {
+        @include m.tablet {
+            flex-direction: column;
+            gap: 20px;
+            align-items: end;
+            width: 100%;
+        }
+    }
+
+    .header-desktop-menu {
+        margin-right: m.clamp-f(70px, 227px, 992px, 1320px);
+        display: flex;
+
+        @include m.tablet {
+            display: none;
+        }
+
+        a {
+            margin-right: 30px;
+
+            &:last-child {
+                @include m.tablet {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+
+    .header-mobile-menu {
+        padding: 20px;
+        height: 100vh;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        right: 0;
+        background-color: v.$color-white;
+        box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+        z-index: -1;
+        transition: all 0.3s ease;
+        opacity: 0;
+        display: none;
+        width: 100vw;
+        transform: translate(-50%, 0);
+
+        @include m.tablet {
+            display: block;
+        }
+
+        &--open {
+            transform: translate(-50%, 100%);
+            opacity: 1;
+        }
+    }
+
+    .header-desktop-menu, .header-mobile-menu {
+        a {
+            display: block;
+            color: v.$base-text-color;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.2s all ease;
+
+            &:hover, &:active, &.active {
+                color: v.$color-accent;
+            }
+        }
+    }
+
+    .header-mobile-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+
+        a {
+            display: block;
+
+        }
+    }
+
+    .header-bottom {
+        display: flex;
+        align-items: center;
+
+        @include m.tablet {
+            justify-content: space-between;
+            width: 100%;
+        }
+    }
+
+    .header-phone {
         color: v.$color-accent;
-      }
-    }
-  }
+        text-decoration: none;
+        margin-right: m.clamp-f(30px, 141px, 992px, 1320px);
 
-  .header-mobile-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-
-    a {
-      display: block;
-
-    }
-  }
-
-  .header-bottom {
-    display: flex;
-    align-items: center;
-
-    @include m.tablet {
-      justify-content: space-between;
-      width: 100%;
-    }
-  }
-
-  .header-phone {
-    color: v.$color-accent;
-    text-decoration: none;
-    margin-right: m.clamp-f(30px, 141px, 992px, 1320px);
-
-    @include m.tablet {
-      margin: 0;
-    }
-  }
-
-  .header-auth {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    cursor: pointer;
-    color: v.$base-text-color;
-
-    svg {
-      margin-right: 9px;
-    }
-  }
-
-  .burger-menu-btn {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    appearance: none;
-    padding: 0;
-    background-color: transparent;
-    position: relative;
-
-    @include m.tablet {
-      display: inline-flex;
+        @include m.tablet {
+            margin: 0;
+        }
     }
 
-    span {
-      display: block;
-      width: 80%;
-      height: 2px;
-      background-color: v.$base-text-color;
+    .header-auth {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        cursor: pointer;
+        color: v.$base-text-color;
+
+        svg {
+            margin-right: 9px;
+        }
     }
 
-    &:after, &:before {
-      position: absolute;
-      content: '';
-      display: block;
-      width: 80%;
-      height: 2px;
-      background-color: v.$base-text-color;
-      left: 4px;
-      transition: 0.3s all ease;
+    .burger-menu-btn {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        appearance: none;
+        padding: 0;
+        background-color: transparent;
+        position: relative;
+
+        @include m.tablet {
+            display: inline-flex;
+        }
+
+        span {
+            display: block;
+            width: 80%;
+            height: 2px;
+            background-color: v.$base-text-color;
+        }
+
+        &:after, &:before {
+            position: absolute;
+            content: '';
+            display: block;
+            width: 80%;
+            height: 2px;
+            background-color: v.$base-text-color;
+            left: 4px;
+            transition: 0.3s all ease;
+        }
+
+        &:before {
+            top: 8px;
+        }
+
+        &:after {
+            bottom: 8px;
+        }
     }
 
-    &:before {
-      top: 8px;
-    }
+    .burger-menu-btn--open {
 
-    &:after {
-      bottom: 8px;
-    }
-  }
+        span {
+            opacity: 0;
+        }
 
-  .burger-menu-btn--open {
+        &:before {
+            transform: translateY(11px) rotate(45deg);
+        }
 
-    span {
-      opacity: 0;
+        &:after {
+            transform: translateY(-11px) rotate(-45deg);
+        }
     }
-
-    &:before {
-      transform: translateY(11px) rotate(45deg);
-    }
-
-    &:after {
-      transform: translateY(-11px) rotate(-45deg);
-    }
-  }
 }

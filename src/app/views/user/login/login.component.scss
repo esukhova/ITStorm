@@ -4,21 +4,21 @@
 
 .login {
 
-  padding: m.clamp-f(30px, 106px, 992px, 1320px) 0  m.clamp-f(30px, 92px);
-
-  @include m.tablet {
-    padding-top: 0;
-  }
-
-  .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 50px;
+    padding: m.clamp-f(30px, 106px, 992px, 1320px) 0 m.clamp-f(30px, 92px);
 
     @include m.tablet {
-      flex-direction: column;
-      justify-content: start;
+        padding-top: 0;
     }
-  }
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 50px;
+
+        @include m.tablet {
+            flex-direction: column;
+            justify-content: start;
+        }
+    }
 }

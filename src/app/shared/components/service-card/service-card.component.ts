@@ -5,10 +5,10 @@ import {ModalComponent} from '../modal/modal.component';
 import {RequestTypeType} from '../../../../types/requestType.type';
 
 @Component({
-  selector: 'service-card',
-  standalone: false,
-  templateUrl: './service-card.component.html',
-  styleUrl: './service-card.component.scss'
+    selector: 'service-card',
+    standalone: false,
+    templateUrl: './service-card.component.html',
+    styleUrl: './service-card.component.scss'
 })
 export class ServiceCardComponent {
 
@@ -20,11 +20,12 @@ export class ServiceCardComponent {
     }
 
     openModal() {
-      this.dialogRef = this.dialog.open(ModalComponent, {
-        data: {
-          services: this.services,
-          selectedService: this.service.title,
-          type: RequestTypeType.order,
-        }});
+        this.dialogRef = this.dialog.open(ModalComponent, {
+            data: {
+                services: this.services,
+                selectedService: this.service.title,
+                type: RequestTypeType.order,
+            }
+        });
     }
 }

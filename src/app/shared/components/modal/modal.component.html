@@ -1,43 +1,47 @@
 <section class="modal" [formGroup]="modalForm">
-  <button class="modal-close" (click)="closeModal()">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="1.93562" y1="2.64999" x2="13.9564" y2="14.6708" stroke="#BEBEBE" stroke-linecap="round"/>
-      <line x1="13.9236" y1="2.62978" x2="1.90277" y2="14.6506" stroke="#BEBEBE" stroke-linecap="round"/>
-    </svg>
-  </button>
-  <div class="modal-form" *ngIf="!successfulRequest">
-    <div class="modal-title" *ngIf="requestType === requestTypes.order">Заявка на услугу</div>
-    <div class="modal-title" *ngIf="requestType === requestTypes.consultation">Закажите бесплатную консультацию!</div>
-    <div class="modal-inputs">
-      <div class="modal-input">
-        <select name="service" class="input" *ngIf="requestType === requestTypes.order" formControlName="service">
-          <option value="{{ service.title }}" class="modal-select-option" *ngFor="let service of data.services, let i = index">{{ service.title }}</option>
-        </select>
-      </div>
-      <div class="modal-input">
-        <input type="text" class="input"
-               [ngStyle]="{'border-color': modalForm.get('name')?.invalid && (modalForm.get('name')?.dirty || modalForm.get('name')?.touched) ? 'red' : ''}"
-               placeholder="Ваше имя" formControlName="name">
-      </div>
-      <div class="modal-input">
-        <input type="tel" class="input"
-               [ngStyle]="{'border-color': modalForm.get('phone')?.invalid && (modalForm.get('phone')?.dirty || modalForm.get('phone')?.touched) ? 'red' : ''}"
-               placeholder="Ваш номер телефона" formControlName="phone">
-      </div>
+    <button class="modal-close" (click)="closeModal()">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="1.93562" y1="2.64999" x2="13.9564" y2="14.6708" stroke="#BEBEBE" stroke-linecap="round"/>
+            <line x1="13.9236" y1="2.62978" x2="1.90277" y2="14.6506" stroke="#BEBEBE" stroke-linecap="round"/>
+        </svg>
+    </button>
+    <div class="modal-form" *ngIf="!successfulRequest">
+        <div class="modal-title" *ngIf="requestType === requestTypes.order">Заявка на услугу</div>
+        <div class="modal-title" *ngIf="requestType === requestTypes.consultation">Закажите бесплатную консультацию!
+        </div>
+        <div class="modal-inputs">
+            <div class="modal-input">
+                <select name="service" class="input" *ngIf="requestType === requestTypes.order"
+                        formControlName="service">
+                    <option value="{{ service.title }}" class="modal-select-option"
+                            *ngFor="let service of data.services, let i = index">{{ service.title }}
+                    </option>
+                </select>
+            </div>
+            <div class="modal-input">
+                <input type="text" class="input"
+                       [ngStyle]="{'border-color': modalForm.get('name')?.invalid && (modalForm.get('name')?.dirty || modalForm.get('name')?.touched) ? 'red' : ''}"
+                       placeholder="Ваше имя" formControlName="name">
+            </div>
+            <div class="modal-input">
+                <input type="tel" class="input"
+                       [ngStyle]="{'border-color': modalForm.get('phone')?.invalid && (modalForm.get('phone')?.dirty || modalForm.get('phone')?.touched) ? 'red' : ''}"
+                       placeholder="Ваш номер телефона" formControlName="phone">
+            </div>
+        </div>
+        <div class="modal-button">
+            <button class="button" [ngClass]="{'disabled': modalForm.invalid}" (click)="createRequest()"
+                    *ngIf="requestType === requestTypes.order">Оставить заявку
+            </button>
+            <button class="button" [ngClass]="{'disabled': modalForm.invalid}" (click)="createRequest()"
+                    *ngIf="requestType === requestTypes.consultation">Заказать консультацию
+            </button>
+        </div>
+        <div class="error" *ngIf="badRequest">Произошла ошибка при отправке формы, попробуйте еще раз</div>
     </div>
-    <div class="modal-button">
-      <button class="button" [ngClass]="{'disabled': modalForm.invalid}" (click)="createRequest()"
-              *ngIf="requestType === requestTypes.order">Оставить заявку
-      </button>
-      <button class="button" [ngClass]="{'disabled': modalForm.invalid}" (click)="createRequest()"
-              *ngIf="requestType === requestTypes.consultation">Заказать консультацию
-      </button>
+    <div class="modal-content" *ngIf="successfulRequest">
+        <div class="modal-title">Спасибо за вашу заявку!</div>
+        <div class="modal-text">Мы свяжемся с вами при первой же возможности.</div>
+        <button class="button" (click)="closeModal()">Окей</button>
     </div>
-    <div class="error" *ngIf="badRequest">Произошла ошибка при отправке формы, попробуйте еще раз</div>
-  </div>
-  <div class="modal-content" *ngIf="successfulRequest">
-    <div class="modal-title">Спасибо за вашу заявку!</div>
-    <div class="modal-text">Мы свяжемся с вами при первой же возможности.</div>
-    <button class="button" (click)="closeModal()">Окей</button>
-  </div>
 </section>

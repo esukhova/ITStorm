@@ -17,28 +17,28 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AuthInterceptor} from "./core/auth/auth.interceptor";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LayoutComponent,
-    HeaderComponent,
-    FooterComponent,
-    MainComponent
-  ],
-  imports: [
-    BrowserModule,
-    MatSnackBarModule,
-    MatMenuModule,
-    SharedModule,
-    CarouselModule,
-    RouterModule,
-    BrowserAnimationsModule,
-    AppRoutingModule
-  ],
-  providers: [provideHttpClient(withInterceptorsFromDi()),
-    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        LayoutComponent,
+        HeaderComponent,
+        FooterComponent,
+        MainComponent
+    ],
+    imports: [
+        BrowserModule,
+        MatSnackBarModule,
+        MatMenuModule,
+        SharedModule,
+        CarouselModule,
+        RouterModule,
+        BrowserAnimationsModule,
+        AppRoutingModule
+    ],
+    providers: [provideHttpClient(withInterceptorsFromDi()),
+        {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},
+        {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }

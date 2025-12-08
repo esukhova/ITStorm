@@ -1,20 +1,21 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class LoaderService {
 
-  isShowed$ = new Subject<boolean>();
+    isShowed$ = new Subject<boolean>();
 
-  constructor() { }
+    constructor() {
+    }
 
-  show() {
-    this.isShowed$.next(true);
-  }
+    show() {
+        this.isShowed$.next(true);
+    }
 
-  hide() {
-    this.isShowed$.next(false);
-  }
+    hide() {
+        this.isShowed$.next(false);
+    }
 }

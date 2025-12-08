@@ -9,16 +9,16 @@ import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 
 
 @NgModule({
-  declarations: [
-    BlogComponent,
-    ArticleComponent
-  ],
-  imports: [
-    CommonModule,
-    ArticleRoutingModule,
-    MatBottomSheetModule,
-    SharedModule
-  ]
+    declarations: [
+        BlogComponent,
+        ArticleComponent
+    ],
+    imports: [
+        CommonModule,
+        ArticleRoutingModule,
+        MatBottomSheetModule,
+        SharedModule
+    ]
 })
 export class ArticleModule {
 }

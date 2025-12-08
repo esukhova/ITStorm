@@ -3,5 +3,6 @@
     <div class="article-card-image" style="background-image: url({{serverStaticPath + article.image }})"></div>
     <div class="article-card-title">{{ article.title }}</div>
     <div class="article-card-text">{{ article.description }}</div>
-    <a [routerLink]="'/article/' + article.url" class="article-card-readmore" (click)="onReadMoreClick()">Читать дальше</a>
+    <a [routerLink]="'/article/' + article.url" class="article-card-readmore" (click)="onReadMoreClick()">Читать
+        дальше</a>
 </div>

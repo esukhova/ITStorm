@@ -2,84 +2,84 @@
 @use "../../../../../public/assets/styles/mixins" as m;
 
 .service-card {
-	max-width: 291px;
-  width: 100%;
-	height: 498px;
-	box-sizing: border-box;
-	font-family: 'Montserrat', sans-serif;
-	display: flex;
-	flex-direction: column;
-
-  @include m.tablet {
-    max-width: unset;
-    height: 100%;
-  }
-
-	.service-card-image {
+    max-width: 291px;
     width: 100%;
-		height: m.clamp-value(291px);
-		min-height: m.clamp-value(291px);
-		border-radius: 5px;
-		background-size: cover;
-		background-position: center;
-
-    @include m.desktop {
-      min-height: unset;
-      height: 210px;
-      flex: 0 0 210px;
-    }
-
-    @include m.small-mobile {
-      max-width: unset;
-    }
-	}
-
-	.service-card-title {
-		margin: 15px 0 10px;
-
-		@include m.font-styles('head-montserrat-20');
-	}
-
-	.service-card-text {
-		color: v.$base-text-color;
-
-    @include m.font-styles('body');
+    height: 498px;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
 
     @include m.tablet {
-      margin-bottom: 30px;
-    }
-	}
-
-	.service-card-bottom {
-		margin-top: auto;
-		justify-self: end;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 21px;
-	}
-
-	.service-card-price {
-		font-family: 'Montserrat', sans-serif;
-		font-weight: 600;
-		font-size: v.clamp-value-font(20px);
-		line-height: 130%;
-		color: v.$color-accent;
-
-    @include m.container-width {
-      font-size: v.clamp-value-font(16px);
+        max-width: unset;
+        height: 100%;
     }
 
-    @include m.mobile {
-      font-size: v.clamp-value-font-m(16px);
-    }
-	}
+    .service-card-image {
+        width: 100%;
+        height: m.clamp-value(291px);
+        min-height: m.clamp-value(291px);
+        border-radius: 5px;
+        background-size: cover;
+        background-position: center;
 
-	.service-card-button-details.button {
-		padding: 15px m.clamp-f(15px, 33px, 992px, 1320px);
+        @include m.desktop {
+            min-height: unset;
+            height: 210px;
+            flex: 0 0 210px;
+        }
 
-    @include m.mobile {
-      min-width: 60%;
+        @include m.small-mobile {
+            max-width: unset;
+        }
     }
-	}
+
+    .service-card-title {
+        margin: 15px 0 10px;
+
+        @include m.font-styles('head-montserrat-20');
+    }
+
+    .service-card-text {
+        color: v.$base-text-color;
+
+        @include m.font-styles('body');
+
+        @include m.tablet {
+            margin-bottom: 30px;
+        }
+    }
+
+    .service-card-bottom {
+        margin-top: auto;
+        justify-self: end;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 21px;
+    }
+
+    .service-card-price {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: v.clamp-value-font(20px);
+        line-height: 130%;
+        color: v.$color-accent;
+
+        @include m.container-width {
+            font-size: v.clamp-value-font(16px);
+        }
+
+        @include m.mobile {
+            font-size: v.clamp-value-font-m(16px);
+        }
+    }
+
+    .service-card-button-details.button {
+        padding: 15px m.clamp-f(15px, 33px, 992px, 1320px);
+
+        @include m.mobile {
+            min-width: 60%;
+        }
+    }
 }

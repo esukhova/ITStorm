@@ -22,8 +22,8 @@ export class ArticleService {
         return this.http.get<ArticleType[]>(environment.api + 'articles/related/' + id);
     }
 
-    getArticles(params: ActiveParamsType): Observable<{count: number, pages: number, items: ArticleType[]}> {
-        return this.http.get<{count: number, pages: number, items: ArticleType[]}>(environment.api + 'articles', {
+    getArticles(params: ActiveParamsType): Observable<{ count: number, pages: number, items: ArticleType[] }> {
+        return this.http.get<{ count: number, pages: number, items: ArticleType[] }>(environment.api + 'articles', {
             params: params
         });
     }

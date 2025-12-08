@@ -4,62 +4,62 @@
 
 
 .modal {
-  max-width: 727px;
-  width: 100%;
-  max-height: 489px;
-  display: flex;
-  justify-content: center;
-  padding: m.clamp-f(30px, 94px, 992px, 1480px) m.clamp-f(30px, 140px, 992px, 1480px) m.clamp-f(30px, 86px, 992px, 1480px);
-  position: relative;
-  margin: 0 auto;
-  animation: none;
-  opacity: 1;
-
-  @include m.tablet {
-    padding: 30px;
-    max-width: calc(100vw - 32px) !important;
-  }
-
-  @include m.mobile {
-    max-width:  calc(100vw - 32px);
-    padding: 30px;
-  }
-
-  .modal-close {
-    position: absolute;
-    cursor: pointer;
-    top: m.clamp-f(12px, 32px);
-    right: m.clamp-f(20px, 32px);
-  }
-
-  .modal-content {
+    max-width: 727px;
+    width: 100%;
+    max-height: 489px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100%;
     justify-content: center;
-  }
-
-  .modal-title {
-    margin-bottom: 20px;
-    text-align: center;
-    max-width: 445px;
-    @include m.font-styles('head-lora-38');
+    padding: m.clamp-f(30px, 94px, 992px, 1480px) m.clamp-f(30px, 140px, 992px, 1480px) m.clamp-f(30px, 86px, 992px, 1480px);
+    position: relative;
+    margin: 0 auto;
+    animation: none;
+    opacity: 1;
 
     @include m.tablet {
-      max-width: 100%;
+        padding: 30px;
+        max-width: calc(100vw - 32px) !important;
     }
-  }
 
-  .modal-text {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 14px;
-    font-weight: 500;
-    color: v.$secondary-text-color;
-  }
+    @include m.mobile {
+        max-width: calc(100vw - 32px);
+        padding: 30px;
+    }
 
-  button.button {
-    width: auto;
-  }
+    .modal-close {
+        position: absolute;
+        cursor: pointer;
+        top: m.clamp-f(12px, 32px);
+        right: m.clamp-f(20px, 32px);
+    }
+
+    .modal-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100%;
+        justify-content: center;
+    }
+
+    .modal-title {
+        margin-bottom: 20px;
+        text-align: center;
+        max-width: 445px;
+        @include m.font-styles('head-lora-38');
+
+        @include m.tablet {
+            max-width: 100%;
+        }
+    }
+
+    .modal-text {
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 14px;
+        font-weight: 500;
+        color: v.$secondary-text-color;
+    }
+
+    button.button {
+        width: auto;
+    }
 }
