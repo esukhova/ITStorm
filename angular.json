@@ -24,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "baseHref": "/ITStorm/",
+            "baseHref": "/",
             "outputPath": "dist/frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -55,7 +55,7 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
+                  "maximumWarning": "900kB",
                   "maximumError": "1MB"
                 },
                 {
